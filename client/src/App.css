@@ -741,7 +741,8 @@ body {
   }
 
   /* Bigger message text on mobile */
-  .msg-text { font-size: 16px; }
+  .msg-text { font-size: 11px; }
+  .msg-meta {font-size: 7px;}
 
   /* Input: prevent zoom on iOS (font-size >= 16px) */
   .chat-input { font-size: 16px; }
