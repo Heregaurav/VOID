@@ -234,7 +234,7 @@ body {
 /* Connection status bar */
 .conn-status {
   padding: 8px 14px;
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 2px;
   border-top: 1px solid var(--fog);
   display: flex;
@@ -248,7 +248,7 @@ body {
   flex-shrink: 0;
 }
 
-.conn-dot.connected { background: #1aff6e; }
+.conn-dot.connected { background: #1bff6f; }
 .conn-dot.disconnected { background: var(--blood-bright); animation: soulPulse 1s infinite; }
 .conn-dot.connecting { background: var(--amber); animation: soulPulse 0.7s infinite; }
 
@@ -367,7 +367,7 @@ body {
 .msg-group.mine .msg-body { text-align: right; }
 
 .msg-meta {
-  font-size: 14px;
+  font-size: 9px;
   color: var(--ghost);
   margin-bottom: 5px;
   letter-spacing: 1px;
@@ -393,7 +393,7 @@ body {
 }
 
 .msg-text {
-  font-size: 15px;
+  font-size: 13px;
   color: var(--bone);
   line-height: 1.6;
   font-family: var(--font-body);
@@ -436,7 +436,7 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 13px;
+  font-size: 15px;
   color: rgba(220,60,60,0.9);
   letter-spacing: 1px;
   font-family: var(--font-mono);
@@ -490,7 +490,7 @@ body {
   padding: 12px 60px 12px 14px;
   color: var(--bone);
   font-family: var(--font-body);
-  font-size: 15px;
+  font-size: 14px;
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s;
   caret-color: var(--blood-bright);
