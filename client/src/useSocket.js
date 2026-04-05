@@ -1,7 +1,16 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { io } from 'socket.io-client';
 
-const SERVER_URL = process.env.REACT_APP_SERVER_URL ;
+const SERVER_URL =
+  import.meta.env.VITE_BACKEND_URL ||
+  "https://void-cgiy.onrender.com";
+
+console.log("Connecting to:", SERVER_URL);
+
+
+const socket = io(SERVER_URL, {
+  transports: ['websocket', 'polling'],
+});;
 
 export function useSocket() {
   const socketRef = useRef(null);
