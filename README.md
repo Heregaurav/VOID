@@ -1,4 +1,4 @@
-# ☠ VOID — Horror Anonymous Real-Time Chat
+# ☠ VOID — Horror Anonymous Real-Time Chat : - still working over it version 1.2 will be coming soon..
 
 > "Speak into the darkness. Something always answers."
 
