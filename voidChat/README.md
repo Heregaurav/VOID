@@ -15,8 +15,8 @@ void-chat/
 ├── client/
 │   ├── public/index.html
 │   ├── src/
-│   │   ├── App.jsx         ← Full chat UI
-│   │   ├── App.css         ← Horror styles (CRT, blood, fonts)
+│   │   ├── App.jsx        
+│   │   ├── App.css         
 │   │   ├── useSocket.js    ← Custom hook: all socket logic
 │   │   └── index.js
 │   └── package.json
@@ -36,7 +36,7 @@ cd ../client && npm install
 
 ```bash
 cd server
-npm run dev     # auto-restart (nodemon)
+npm run dev    
 ```
 
 Runs on: http://localhost:5000

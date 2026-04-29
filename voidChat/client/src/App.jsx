@@ -78,12 +78,12 @@ function TypingBar({ typingUsers }) {
 }
 
 // ─── Sidebar ──────────────────────────────────────────────
-function Sidebar({ identity, soulCount, connected, socketId, typingUsers }) {
+function Sidebar({ identity, soulCount, connected, socketId, typingUsers, isOpen, onClose }) {
   const connClass = connected ? 'connected' : 'disconnected';
   const connLabel = connected ? 'CONNECTED' : 'RECONNECTING...';
 
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className="sidebar-header">
         <div className="logo">☠ VOID</div>
         <div className="logo-sub">ANONYMOUS CHAT</div>
@@ -145,6 +145,7 @@ export default function App() {
   const [input, setInput] = useState('');
   const [toasts, setToasts] = useState([]);
   const [showScrollBtn, setShowScrollBtn] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const messagesEndRef = useRef(null);
   const messagesAreaRef = useRef(null);
   const typingTimerRef = useRef(null);
@@ -219,15 +220,40 @@ export default function App() {
         <div className="crt-vignette" />
       </div>
 
+      {/* Sidebar backdrop (mobile only) */}
+      <div
+        className={`sidebar-backdrop ${sidebarOpen ? 'visible' : ''}`}
+        onClick={() => setSidebarOpen(false)}
+      />
+
       <Sidebar
         identity={identity}
         soulCount={soulCount}
         connected={connected}
         socketId={socketId}
         typingUsers={typingUsers}
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
       />
 
       <main className="chat-main">
+        {/* Mobile top bar */}
+        <div className="mobile-topbar">
+          <div className="mobile-topbar__logo">☠ VOID</div>
+          <div className="mobile-topbar__right">
+            <div className="mobile-topbar__souls">
+              <div className="soul-pulse" style={{width:7,height:7,borderRadius:'50%',background:'var(--blood-bright)',flexShrink:0,animation:'soulPulse 1.5s ease-in-out infinite'}} />
+              {soulCount} {soulCount === 1 ? 'soul' : 'souls'}
+            </div>
+            <button
+              className="mobile-topbar__menu"
+              onClick={() => setSidebarOpen(true)}
+              aria-label="Open menu"
+            >
+              ☰
+            </button>
+          </div>
+        </div>
         {/* Messages */}
         <div
           className="messages-area"

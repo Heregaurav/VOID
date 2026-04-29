@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 5000;
 const MAX_MSG_LENGTH = 300;
 const RATE_LIMIT_WINDOW = 5000;   // ms
 const RATE_LIMIT_MAX = 5;         // messages per window
-const MESSAGE_HISTORY = 50;       // how many messages to keep in memory
+const MESSAGE_HISTORY = 1000;       // how many messages to keep in memory
 
 // ─── Identity pools ───────────────────────────────────────
 const AVATARS = ['👻','💀','🕷️','🦇','🐺','🕯️','☠️','🩸','👁️','🪦','🕸️','🔮','🗡️','🩻','🪄','🌑'];
