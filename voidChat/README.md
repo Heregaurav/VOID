@@ -1,8 +1,8 @@
-# ☠ VOID — Horror Anonymous Real-Time Chat
+# ☠ VOID — campus community platform  : - still working over it version 1.2 will be coming soon..
 
 > "Speak into the darkness. Something always answers."
 
-A full-stack anonymous real-time chat platform with a horror aesthetic.
+A anonymous Campus community platform with a horror aesthetic.
 Built with React + Socket.IO + Node.js/Express.
 
 ## Project Structure

@@ -1,0 +1,78 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: void_db
+    restart: always
+    environment:
+      POSTGRES_USER: gaurav
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: void_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    container_name: void_redis
+    restart: always
+    ports:
+      - "6379:6379"
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: void_server
+    restart: always
+    environment:
+      PORT: 5000
+      DATABASE_URL: postgresql://gaurav:password@db:5432/void_db
+      REDIS_URL: redis://redis:6379
+      ADMIN_TOKEN: void_secret_666
+      JWT_SECRET: void_ghost_jwt_secret_666
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - uploads_volume:/usr/src/app/public/uploads
+
+  nginx:
+    image: nginx:alpine
+    container_name: void_nginx
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./client/build:/usr/share/nginx/html
+    depends_on:
+      - server
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: void_prometheus
+    restart: always
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    depends_on:
+      - server
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: void_grafana
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+
+volumes:
+  pgdata:
+  uploads_volume:
